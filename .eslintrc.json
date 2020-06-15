@@ -27,7 +27,11 @@
       "brace-style": "error",
       "indent": [
           "error",
+<<<<<<< HEAD
           "tabs"
+=======
+          "tab"
+>>>>>>> ca9d56a9c4ed06f778c4c0e32c1ecbf85c81ca5c
       ],
       "linebreak-style": [
           "error",
