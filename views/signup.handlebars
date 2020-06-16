@@ -1,49 +1,51 @@
-  <div class="container signup-form">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Sign Up Form</h2>
-        <form class="signup">
-           <div class="form-group">
-    <label for="exampleInputPassword1">First Name</label>
-    <input type="password" class="form-control" id="password-input" placeholder="Dewey">
-</div>
-<div class="form-group">
-    <label for="exampleInputPassword1">Last Name</label>
-    <input type="password" class="form-control" id="password-input" placeholder="Finn">
-</div>
-         {{> login-block}}
+<div class="container signup-form">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h2>Sign Up Form</h2>
+      <form class="signup">
+        <div class="form-group">
+          <label for="exampleInputPassword1">First Name</label>
+          <input type="password" class="form-control" id="password-input" placeholder="Dewey">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Last Name</label>
+          <input type="password" class="form-control" id="password-input" placeholder="Finn">
+        </div>
+        {{> login-block}}
         <div class="user-type-dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Select User Type
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Student</a>
-    <a class="dropdown-item" href="#">Teacher</a>
-  </div>
-</div>
-<br>
-{{!-- if student display --}}
-<div class="student-dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Select Teacher
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-  </div>
-</div>
-<br>
-          <div style="display: none" id="alert" class="alert alert-danger" role="alert">
-            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            <span class="sr-only">Error:</span> <span class="msg"></span>
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Select User Type
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="/api/student">Student</a>
+            <a class="dropdown-item" href="/api/teachers">Teacher</a>
           </div>
+        </div>
+        <br>
+        {{!-- if student display --}}
+        <div class="student-dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Select Teacher
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Teacher name one</a>
+            <a class="dropdown-item" href="#">Teacher name two</a>
+            <a class="dropdown-item" href="#">teacher name three</a>
+          </div>
+        </div>
+        <br>
+        <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only">Error:</span> <span class="msg"></span>
+        </div>
 
-          <!--drop down menu to select which teacher, -->
-          <button type="submit" class="btn btn-primary">Sign Up</button>
-        </form>
-        <br />
-        <p>Or log in <a href="/login">here</a></p>
-      </div>
+        <!--drop down menu to select which teacher, -->
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+      </form>
+      <br />
+      <p>Or log in <a href="/login">here</a></p>
     </div>
   </div>
+</div>
