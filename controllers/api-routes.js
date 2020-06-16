@@ -87,4 +87,35 @@ module.exports = function (app) {
 			res.status(500).json(err);
 		});
 	});
+
+	// Route for getting list of tasks not graded
+	app.get("/api/ungradedTasks", function (req, res) {
+		db.Task.findAll({
+			where: {
+				completed: true,
+				graded: false,
+			},
+			include: [{
+				model: db.User,
+				required: true
+			}]
+		}).then(function (tasks) {
+			res.json(tasks);
+		}).catch(function (err) {
+			res.status(500).json(err);
+		});
+	});
+
+	// Route for getting list of tasks graded
+	app.get("/api/gradedTasks", function (req, res) {
+		db.Task.findAll({
+			where: { graded: true },
+			include: [{
+				model: db.User,
+				required: true
+			}]
+		}).then(function(tasks) {
+			res.json(tasks);
+		});
+	});
 };
