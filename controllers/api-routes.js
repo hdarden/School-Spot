@@ -54,4 +54,28 @@ module.exports = function(app) {
 			});
 		}
 	});
+
+	// Route for getting a list of teachers
+	app.get("/api/teachers", function(req, res) {
+		User.findAll({
+			attributes: ["id", ["firstName", "First Name"], ["lastName", "Last Name"]],
+			where: {
+				user_type: "Teacher"
+			}
+		}).then(function(dbTeachers) {
+			res.json(dbTeachers);
+		});
+	});
+
+	// Route for getting a list of students
+	app.get("/api/students", function(req, res) {
+		User.findAll({
+			attributes: ["id", ["firstName", "First Name"], ["lastName", "Last Name"]],
+			where: {
+				user_type: "Student"
+			}
+		}).then(function(dbStudents) {
+			res.json(dbStudents);
+		});
+	});
 };
