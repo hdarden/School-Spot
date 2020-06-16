@@ -12,14 +12,34 @@
     <input type="password" class="form-control" id="password-input" placeholder="Doe">
 </div>
          {{> login-block}}
-        
+        <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Student</a>
+    <a class="dropdown-item" href="#">Teacher</a>
+  </div>
+</div>
+<br>
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
+<br>
           <div style="display: none" id="alert" class="alert alert-danger" role="alert">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <span class="sr-only">Error:</span> <span class="msg"></span>
           </div>
-          
+
           <!--drop down menu to select which teacher, -->
-          <button type="submit" class="btn btn-outline-dark">Sign Up</button>
+          <button type="submit" class="btn btn-primary">Sign Up</button>
         </form>
         <br />
         <p>Or log in <a href="/login">here</a></p>

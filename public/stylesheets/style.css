@@ -15,7 +15,7 @@ body {
 .navbar-text {
   font-family: 'Indie Flower', cursive;
   font-size: 60px;
-  color: #66CCFF
+  color: #66CCFF;
 }
 
 .nav-link {
@@ -28,6 +28,9 @@ body {
 /* =============== Login page ========================= */
 .login-form {
   margin-top: 100px;
+}
+.btn {
+  background-color:  #000066;
 }
 
 
