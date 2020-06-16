@@ -1,10 +1,18 @@
 form.signup,
 form.login {
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 body {
   background-color:  #99CCFF;
+}
+h2 {
+  font-family: 'Indie Flower', cursive;
+  color:  #000066;
+}
+.form-group {
+  color:  #000066;
+  font-family: 'Itim', cursive;
 }
 /* ================ Navbar ======================== */
 .navbar {
@@ -15,7 +23,7 @@ body {
 .navbar-text {
   font-family: 'Indie Flower', cursive;
   font-size: 60px;
-  color: #66CCFF
+  color: #99CCFF;
 }
 
 .nav-link {
@@ -25,7 +33,14 @@ body {
 }
 /* ==================================================== */
 
-/* =============== Login page ========================= */
-.login-form {
-  margin-top: 60px;
+/* =============== Forms ========================= */
+.login-form, .signup-form {
+  margin-top: 100px;
+  font-family: 'Itim', cursive;
 }
+.btn {
+  background-color:  #000066;
+}
+
+
+
