@@ -15,6 +15,7 @@ module.exports = function (app) {
 	// how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
 	// otherwise send back an error
 	app.post("/api/signup", function (req, res) {
+		//console.log(req.body)
 		db.User.create({
 			// eslint-disable-next-line camelcase
 			firstName: req.body.firstName,
@@ -23,19 +24,24 @@ module.exports = function (app) {
 			password: req.body.password,
 			userType: req.body.userType,
 			teacherID: req.body.teacherID
-		}).then(function () {
-			res.redirect(307, "/api/login");
+		}).then(function (dbUser) {
+			res.json(dbUser)
 		}).catch(function (err) {
-			res.status(401).json(err);
+			res.json(err);
 		});
 	});
+	/* db.student.create({
+		if(req.body.userType)
+	}) */
+
+	//need separate table to separate student and teacher
 
 	// Route for logging user out
 	app.get("/logout", function (req, res) {
 		req.logout();
 		res.redirect("/");
 	});
-
+	//can grab user name and add "welcome user to the page"
 	// Route for getting some data about our user to be used client side
 	app.get("/api/user_data", function (req, res) {
 		if (!req.user) {
