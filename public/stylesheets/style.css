@@ -6,6 +6,10 @@ form.login {
 body {
   background-color:  #99CCFF;
 }
+h2 {
+  font-family: 'Indie Flower', cursive;
+  color:  #000066;
+}
 /* ================ Navbar ======================== */
 .navbar {
   background-color: #000066;
