@@ -12,9 +12,9 @@
     <input type="password" class="form-control" id="password-input" placeholder="Doe">
 </div>
          {{> login-block}}
-        <div class="dropdown">
+        <div class="user-type-dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
+    Select User Type
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" href="#">Student</a>
@@ -22,9 +22,10 @@
   </div>
 </div>
 <br>
-<div class="dropdown">
+{{!-- if student display --}}
+<div class="student-dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
+    Select Teacher
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" href="#">Action</a>
