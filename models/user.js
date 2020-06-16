@@ -18,10 +18,10 @@ module.exports = function (sequelize, DataTypes) {
 			allowNull: false
 		},
 		// The user type is defaulted to true (Is user a student?)
-		isStudent: {
-			type: DataTypes.Boolean,
+		userType: {
+			type: DataTypes.STRING,
 			allowNull: false,
-			defaultValue: true
+			values: ["Student", "Teacher"]
 		},
 		// The user's first name
 		firstName: {
@@ -32,18 +32,31 @@ module.exports = function (sequelize, DataTypes) {
 		lastName: {
 			type: DataTypes.STRING,
 			allowNull: false,
+		},
+		teacherID: {
+			type: DataTypes.INTEGER,
+			allowNull: true
 		}
 	});
-	// Student has one teacher
-	User.hasMany(User, {as: "Students"});
+
+	// Relationships
+	User.associate = function(models) {
+		// Teacher can have many students
+		User.hasMany(User, {as: "Students"});
+		// Student has many Tasks
+		User.hasMany(models.Task);
+	};
+
 	// Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
 	User.prototype.validPassword = function (password) {
 		return bcrypt.compareSync(password, this.password);
 	};
+
 	// Hooks are automatic methods that run during various phases of the User Model lifecycle
 	// In this case, before a User is created, we will automatically hash their password
 	User.addHook("beforeCreate", function (user) {
 		user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
 	});
+
 	return User;
 };

@@ -1,8 +1,10 @@
+// Define the User object
+
 // Creating our Task model
 module.exports = function (sequelize, DataTypes) {
 	var Task = sequelize.define("Task", {
 		taskDetail: {
-			type: DataTypes.STRING(255),
+			type: DataTypes.STRING,
 			allowNull: false
 		},
 		dueDate: {
@@ -24,6 +26,12 @@ module.exports = function (sequelize, DataTypes) {
 			allowNull: true,
 		}
 	});
-	// Student has many Tasks
-	User.hasMany(Task, {as: "Tasks"});
+
+	// Relationships
+	Task.associate = function(models) {
+		// Student has many Tasks
+		Task.belongsTo(models.User);
+	};
+
+	return Task;
 };
