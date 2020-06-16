@@ -42,5 +42,8 @@ h2 {
   background-color:  #000066;
 }
 
+.dropdown-item{
+  cursor: pointer;
+}
 
 

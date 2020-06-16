@@ -1,7 +1,8 @@
-const express = require("express")
-const passport = require("../config/passport");
+var express = require("express");
+var passport = require("../config/passport");
+var db = require("../models");
 
-const router = express.Router()
+var router = express.Router()
 
 router.get("/", (req, res) => {
     res.render("login")
@@ -17,6 +18,7 @@ router.get("/teacher", (req, res) => {
 router.get("/child", (req, res) => {
 	res.render("child")
 })
+
 
 module.exports = router
 
