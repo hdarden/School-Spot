@@ -26,8 +26,12 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Requiring our routes
-var routes = require("./controllers/html-routes.js");
+var routes = require("./controllers/html-routes");
+
 app.use(routes);
+
+var apiRoutes = require("./controllers/api-routes.js");
+apiRoutes(app);
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(function() {
