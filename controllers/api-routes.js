@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
@@ -15,8 +16,12 @@ module.exports = function(app) {
 	// otherwise send back an error
 	app.post("/api/signup", function(req, res) {
 		db.User.create({
+			// eslint-disable-next-line camelcase
+			first_name: req.body.first_name,
+			last_name: req.body.last_name,
 			email: req.body.email,
-			password: req.body.password
+			password: req.body.password,
+			user_type: req.body.user_type
 		})
 			.then(function() {
 				res.redirect(307, "/api/login");
@@ -42,7 +47,10 @@ module.exports = function(app) {
 			// Sending back a password, even a hashed password, isn't a good idea
 			res.json({
 				email: req.user.email,
-				id: req.user.id
+				first_name: req.body.first_name,
+				last_name: req.body.last_name,
+				id: req.user.id,
+				user_type: req.body.user_type
 			});
 		}
 	});
