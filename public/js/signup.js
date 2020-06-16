@@ -4,8 +4,16 @@ $(document).ready(function() {
 	var emailInput = $("input#email-input");
 	var passwordInput = $("input#password-input");
 
-// listener fo the user type button
-
+	var userTypeBtn = $("#userTypeButton");
+	// Listener for the User Type button
+	userTypeBtn.on("click", function(event) {
+		event.preventDefault();
+		var userData = {
+			userType: userTypeBtn.val()
+		};
+		console.log(userData);
+		return userData;
+	});
 	// When the signup button is clicked, we validate the email and password are not blank
 	signUpForm.on("submit", function(event) {
 		event.preventDefault();

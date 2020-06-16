@@ -4,12 +4,12 @@
       <h2>Sign Up Form</h2>
       <form class="signup">
         <div class="form-group">
-          <label for="exampleInputPassword1">First Name</label>
-          <input type="password" class="form-control" id="password-input" placeholder="Dewey">
+          <label for="exampleInputEmail1">First Name</label>
+          <input type="name" class="form-control" id="firstName-input" placeholder="First Name">
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Last Name</label>
-          <input type="password" class="form-control" id="password-input" placeholder="Finn">
+          <label for="exampleInputEmail1">Last Name</label>
+          <input type="name" class="form-control" id="lastName-input" placeholder="Last Name">
         </div>
         {{> login-block}}
         <div class="user-type-dropdown">
@@ -18,8 +18,8 @@
             Select User Type
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="/api/student">Student</a>
-            <a class="dropdown-item" href="/api/teachers">Teacher</a>
+            <a class="dropdown-item" href="#">Student</a>
+            <a class="dropdown-item" href="#">Teacher</a>
           </div>
         </div>
         <br>
