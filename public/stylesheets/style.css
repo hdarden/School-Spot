@@ -2,3 +2,30 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
+body {
+  background-color:  #99CCFF;
+}
+/* ================ Navbar ======================== */
+.navbar {
+  background-color: #000066;
+  padding: 40px;
+}
+
+.navbar-text {
+  font-family: 'Indie Flower', cursive;
+  font-size: 60px;
+  color: #66CCFF
+}
+
+.nav-link {
+  font-family: 'Indie Flower', cursive;
+  font-size: 40px;
+  float: right;
+}
+/* ==================================================== */
+
+/* =============== Login page ========================= */
+.login-form {
+  margin-top: 60px;
+}
