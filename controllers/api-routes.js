@@ -34,7 +34,7 @@ module.exports = function (app) {
 		if(req.body.userType)
 	}) */
 
-	//need separate table to separate student and teacher
+
 
 	// Route for logging user out
 	app.get("/logout", function (req, res) {
