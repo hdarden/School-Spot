@@ -27,7 +27,6 @@ app.set("view engine", "handlebars");
 
 // Requiring our routes
 var routes = require("./controllers/html-routes");
-
 app.use(routes);
 
 var apiRoutes = require("./controllers/api-routes.js");

@@ -34,9 +34,10 @@ $(document).ready(function() {
 
 		// console.log(userData)
 
-		if (!userData.email || !userData.password) {
+		if (!userData.email || !userData.password || !userData.firstName ||  !userData.lastName) {
 			return;
 		}
+
 		// If we have an email and password, run the signUpUser function
 		signUpUser(userData.firstName, userData.lastName, userData.email, userData.password, userData.userType);
 		emailInput.val("");
@@ -57,8 +58,7 @@ $(document).ready(function() {
 			userType: userType
 		})
 			.then(function(data) {
-				console.log(data)
-				// window.location.replace("/teacher");
+				window.location.href= "/";
 				// If there's an error, handle it by throwing up a bootstrap alert
 			})
 			// .catch(handleLoginErr);
