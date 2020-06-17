@@ -32,7 +32,7 @@ $(document).ready(function() {
 			password: password
 		})
 			.then(function() {
-				window.location.replace("../../views/index");
+				window.location.href= "/teacher";
 				// If there's an error, log the error
 			})
 			.catch(function(err) {
