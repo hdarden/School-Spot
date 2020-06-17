@@ -116,6 +116,8 @@ module.exports = function (app) {
 			}]
 		}).then(function (tasks) {
 			res.json(tasks);
+		}).catch(function (err) {
+			res.status(500).json(err);
 		});
 	});
 
