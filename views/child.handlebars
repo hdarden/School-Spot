@@ -38,7 +38,7 @@
     <div class="col-sm-6">
       <h4 class="text-center">Assignments Todo</h4>
       <ul>
-        {{#each task}} {{#if completed}}
+        {{#each task}} {{#if not-completed}}
         <div class="row">
 
           <div class="col-sm-6 text-center completedTask">
@@ -47,7 +47,7 @@
           </div>
           <div class="col-sm-6">
             <button type="submit" data-id="id" class="btn btn-dark enterGrade">
-              Enter Grade
+              Mark Completed
             </button>
             <input class="input-field" id="taskGrade">
           </div>
