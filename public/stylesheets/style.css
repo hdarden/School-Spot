@@ -48,14 +48,11 @@ form.login {
 
 .container-2 {
   float: left;
-  padding-left: 25px;
+  padding-left: 30px;
   font-family: 'Itim', cursive;
   margin-top: 40px;
 }
 .grading-page, .new-task {
   margin-top: 40px;
   font-family: 'Itim', cursive;
-}
-.new-task{
-  content;
 }
