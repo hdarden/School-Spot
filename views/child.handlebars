@@ -1,0 +1,84 @@
+{{!-- grading table --}}
+<div class="container-2">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Grade</th>
+        <th scope="col">Percentage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>A</td>
+        <td>100-90</td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td>89-80</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>79-70</td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td>69-60</td>
+      </tr>
+      <tr>
+        <td>F</td>
+        <td>59-0</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+{{!-- body --}}
+<div class="container grading-page">
+  <div class="row">
+    <!-- Ready to be graded-->
+    <div class="col-sm-6">
+      <h4 class="text-center">Assignments Todo</h4>
+      <ul>
+        {{#each task}} {{#if not-completed}}
+        <div class="row">
+
+          <div class="col-sm-6 text-center completedTask">
+            <p>{{id}}. {{task_name}}</p>
+            {{!-- student Name --}}
+          </div>
+          <div class="col-sm-6">
+            <button type="submit" data-id="id" class="btn btn-dark enterGrade">
+              Mark Completed
+            </button>
+            <input class="input-field" id="taskGrade">
+          </div>
+        </div>
+        <hr />
+        {{/if}} {{/each}}
+      </ul>
+    </div>
+
+    <div class="col-sm-6">
+      <h4 class="text-center">Graded Assignments</h4>
+      <ul>
+
+        <div class="row">
+          {{#each task}} {{#if graded}}
+          <div class="col-sm-6 text-center gradedTask">
+            <p>{{id}}. {{task_name}}</p>
+            {{!-- student name --}}
+          </div>
+        </div>
+        <hr />
+        {{/if}} {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="row new-task">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+   
+    
+    </div>
+  </div>

@@ -5,8 +5,6 @@ $(document).ready(function() {
 	var passwordInput = $("input#password-input");
 	var logoutBtn = $(".logout-btn");
 
-	
-
 	// When the form is submitted, we validate there's an email and password entered
 	loginForm.on("submit", function(event) {
 		event.preventDefault();
