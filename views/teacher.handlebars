@@ -43,7 +43,7 @@
         <div class="row">
 
           <div class="col-sm-6 text-center completedTask">
-            <p>{{id}}. {{task_name}}</p>
+            <p>{{id}}. {{task_details}}</p>
             {{!-- student Name --}}
           </div>
           <div class="col-sm-6">
@@ -65,7 +65,7 @@
         <div class="row">
           {{#each task}} {{#if graded}}
           <div class="col-sm-6 text-center gradedTask">
-            <p>{{id}}. {{task_name}}</p>
+            <p>{{id}}. {{task_details}}</p>
             {{!-- student name --}}
           </div>
           <div class="col-sm-6">
