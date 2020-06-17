@@ -157,4 +157,18 @@ module.exports = function (app) {
 			res.status(500).json(err);
 		});
 	});
+
+	// Teacher grading the task
+	app.put("/api/gradeTask/:id", function (req, res) {
+		db.Task.update({
+			graded: true,
+			taskGrade: req.body.taskGrade
+		}, {
+			where: { taskId: req.params.id }
+		}).then(function (dbTask) {
+			res.json(dbTask);
+		}).catch(function (err) {
+			res.status(500).json(err);
+		});
+	});
 };
