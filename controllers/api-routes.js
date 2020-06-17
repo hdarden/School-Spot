@@ -122,7 +122,7 @@ module.exports = function (app) {
 	});
 
 	// Add a task to each student that has specific teacher
-	app.get("/api/addTask/:id", function (req, res) {
+	app.post("/api/addTask/:id", function (req, res) {
 
 		db.User.findAll({
 			where: {
@@ -130,16 +130,26 @@ module.exports = function (app) {
 				teacherID: req.params.id,
 			}
 		}).then(function (students) {
-
+			console.log(req.body);
 			var tasks = students.map(function (student) {
 				//create task for student
+				console.log(student.id);
 				return {
 					assignedUser: student.id,
 					taskDetail: req.body.taskDetail,
 					dueDate: req.body.dueDate
 				};
 			});
-			db.Task.bulkCreate(tasks);
+			console.log(tasks);
+			db.Task.bulkCreate(tasks)
+				.then(function(err){
+					if(err) {
+						throw err;
+					}
+					return res.sendStatus(200);
+				}).catch(function (err) {
+					res.status(500).json(err);
+				});
 		}).catch(function (err) {
 			res.status(500).json(err);
 		});
