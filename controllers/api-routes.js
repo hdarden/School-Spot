@@ -144,4 +144,17 @@ module.exports = function (app) {
 			res.status(500).json(err);
 		});
 	});
+
+	// Student marking a task completed
+	app.put("/api/completeTask/:id", function (req, res) {
+		db.Task.update({
+			complete: true
+		}, {
+			where: { taskId: req.params.id }
+		}).then(function (dbTask) {
+			res.json(dbTask);
+		}).catch(function (err) {
+			res.status(500).json(err);
+		});
+	});
 };
