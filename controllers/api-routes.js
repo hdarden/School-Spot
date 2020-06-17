@@ -31,12 +31,6 @@ module.exports = function (app) {
 		});
 	});
 
-	/* db.student.create({
-		if(req.body.userType)
-	}) */
-
-
-
 	// Route for logging user out
 	app.get("/logout", function (req, res) {
 		req.logout();

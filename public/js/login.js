@@ -1,4 +1,4 @@
-import { DataTypes } from "sequelize/types";
+
 
 $(document).ready(function() {
 	// Getting references to our form and inputs
@@ -31,14 +31,15 @@ $(document).ready(function() {
 			password: password,
 			userType: userType
 
-		}).then(function() {
-				 if (userType.value === "Teacher"){
-					window.location.href= "/teacher";
-				}else{
-					window.location.href= "/child";
+		}).then(function(data) {
+			console.log(data);
+			if (data.userType === "Teacher"){
+				window.location.href= "/teacher";
+			}else{
+				window.location.href= "/child";
 
-				}	
-				
+			}
+
 		}).catch(function(err) {
 			console.log(err);
 		});
