@@ -31,9 +31,8 @@ $(document).ready(function() {
 			password: password,
 			userType: userType
 
-		}).then(function(userType) {
-				console.log(userType)
-				 if (userType.user === "Teacher"){
+		}).then(function() {
+				 if (userType.value === "Teacher"){
 					window.location.href= "/teacher";
 				}else{
 					window.location.href= "/child";
