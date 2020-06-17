@@ -39,11 +39,11 @@
     <div class="col-sm-6">
       <h4 class="text-center">Ready to Be Graded</h4>
       <ul>
-        {{#each task}} {{#if completed}}
+        {{#each task}}
         <div class="row">
 
           <div class="col-sm-6 text-center completedTask">
-            <p>{{id}}. {{task_details}}</p>
+            <p>{{dataValues.taskDetail}}</p>
             {{!-- student Name --}}
           </div>
           <div class="col-sm-6">
@@ -54,7 +54,7 @@
           </div>
         </div>
         <hr />
-        {{/if}} {{/each}}
+       {{/each}}
       </ul>
     </div>
 
@@ -63,9 +63,9 @@
       <ul>
 
         <div class="row">
-          {{#each task}} {{#if graded}}
+          {{!-- {{#each task}}  --}}
           <div class="col-sm-6 text-center gradedTask">
-            <p>{{id}}. {{task_details}}</p>
+            {{!-- <p>{{id}}. {{task_details}}</p> --}}
             {{!-- student name --}}
           </div>
           <div class="col-sm-6">
@@ -76,7 +76,7 @@
           </div>
         </div>
         <hr />
-        {{/if}} {{/each}}
+        {{!-- {{/if}} {{/each}} --}}
       </ul>
     </div>
   </div>

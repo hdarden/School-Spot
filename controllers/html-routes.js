@@ -13,8 +13,23 @@ router.get("/signup", (req, res) => {
 })
 
 router.get("/teacher", (req, res) => {
-	res.render("teacher")
+    //get all tasks
+    //if completed but not graded
+    db.Task.findAll({
+        where: {
+            completed: true,
+            graded: false,
+        },
+        include: [{
+            model: db.User,
+            required: true
+        }]
+    }).then(function (tasks) {
+        console.log(tasks);
+	res.render("teacher", {"task": tasks})
 })
+})
+
 router.get("/child", (req, res) => {
 	res.render("child")
 })
@@ -61,4 +76,4 @@ module.exports = router
 // 		res.sendFile(path.join(__dirname, "../public/members.html"));
 // 	});
 
-// };
+
