@@ -8,7 +8,7 @@ $(document).ready(function () {
     	? $(".bootstrap-iso form").parent()
     	: "body";
 	var options = {
-		format: "mm/dd/yyyy",
+		format: "yyyy/mm/dd",
 		container: container,
 		todayHighlight: true,
 		autoclose: true,
@@ -45,10 +45,11 @@ $(document).ready(function () {
 
 		//not working//
 		$.post("/api/addTask", {
-			taskDetails: text,
+			taskDetail: text,
 			dueDate: date,
 		}).then(function (data) {
 			console.log(data);
+			window.location.reload();
 			// If there's an error, handle it by throwing up a bootstrap alert
 		});
 		// .catch(handleLoginErr);
