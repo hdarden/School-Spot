@@ -13,10 +13,10 @@ router.get("/signup", (req, res) => {
 })
 
 router.get("/teacher", (req, res) => {
-	res.render("teacher")
+	res.render("teacher", {"user": req.user})
 })
 router.get("/child", (req, res) => {
-	res.render("child")
+	res.render("child", {"user": req.user})
 })
 router.get("/logout", (req, res) => {
     req.logout();

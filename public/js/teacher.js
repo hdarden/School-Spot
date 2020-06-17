@@ -44,8 +44,8 @@ $(document).ready(function () {
 		console.log(text, date);
 
 		//not working//
-		$.post("/api/addTask", {
-			taskDetails: text,
+		$.post("/api/addTask/:id", {
+			taskDetail: text,
 			dueDate: date,
 		}).then(function (data) {
 			console.log(data);
