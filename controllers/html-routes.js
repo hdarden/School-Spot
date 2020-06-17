@@ -5,7 +5,7 @@ var db = require("../models");
 var router = express.Router()
 
 router.get("/", (req, res) => {
-    res.render("login")
+    res.render("login", {"login": true})
 })
 
 router.get("/signup", (req, res) => {
@@ -25,13 +25,12 @@ router.get("/teacher", (req, res) => {
             required: true
         }]
     }).then(function (tasks) {
-        console.log(tasks);
-	res.render("teacher", {"task": tasks})
+	res.render("teacher", {"task": tasks, "user": req.user})
 })
 })
 
 router.get("/child", (req, res) => {
-	res.render("child")
+	res.render("child", {"user": req.user})
 })
 router.get("/logout", (req, res) => {
     req.logout();

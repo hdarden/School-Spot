@@ -43,7 +43,6 @@ $(document).ready(function () {
 	function postTask(text, date) {
 		console.log(text, date);
 
-		//not working//
 		$.post("/api/addTask", {
 			taskDetail: text,
 			dueDate: date,
