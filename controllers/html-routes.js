@@ -5,7 +5,7 @@ var db = require("../models");
 var router = express.Router()
 
 router.get("/", (req, res) => {
-    res.render("login")
+    res.render("login", {"login": true})
 })
 
 router.get("/signup", (req, res) => {
