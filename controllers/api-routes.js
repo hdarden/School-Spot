@@ -88,6 +88,20 @@ module.exports = function (app) {
 		});
 	});
 
+	// Route for getting list of tasks not completed
+	app.get("/api/uncompletedTasks/:id", function (req, res) {
+		db.Task.findAll({
+			where: {
+				completed: false,
+				assignedUser: req.params.id
+			}
+		}).then(function (tasks) {
+			res.json(tasks);
+		}).catch(function (err) {
+			res.status(500).json(err);
+		});
+	});
+
 	// Route for getting list of tasks not graded
 	app.get("/api/ungradedTasks", function (req, res) {
 		db.Task.findAll({
@@ -122,7 +136,7 @@ module.exports = function (app) {
 	});
 
 	// Add a task to each student that has specific teacher
-	app.get("/api/addTask/:id", function (req, res) {
+	app.post("/api/addTask/:id", function (req, res) {
 
 		db.User.findAll({
 			where: {
@@ -130,16 +144,26 @@ module.exports = function (app) {
 				teacherID: req.params.id,
 			}
 		}).then(function (students) {
-
+			console.log(req.body);
 			var tasks = students.map(function (student) {
 				//create task for student
+				console.log(student.id);
 				return {
 					assignedUser: student.id,
 					taskDetail: req.body.taskDetail,
 					dueDate: req.body.dueDate
 				};
 			});
-			db.Task.bulkCreate(tasks);
+			console.log(tasks);
+			db.Task.bulkCreate(tasks)
+				.then(function(err){
+					if(err) {
+						throw err;
+					}
+					return res.sendStatus(200);
+				}).catch(function (err) {
+					res.status(500).json(err);
+				});
 		}).catch(function (err) {
 			res.status(500).json(err);
 		});
