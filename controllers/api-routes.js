@@ -30,6 +30,7 @@ module.exports = function (app) {
 			res.json(err);
 		});
 	});
+	
 	/* db.student.create({
 		if(req.body.userType)
 	}) */
