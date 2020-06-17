@@ -64,7 +64,7 @@ module.exports = function (app) {
 	// Route for getting a list of teachers
 	app.get("/api/teachers", function (req, res) {
 		db.User.findAll({
-			attributes: ["id", ["firstName", "First Name"], ["lastName", "Last Name"]],
+			attributes: ["id", ["firstName", "FirstName"], ["lastName", "LastName"]],
 			where: {
 				userType: "Teacher"
 			}
@@ -78,7 +78,7 @@ module.exports = function (app) {
 	// Route for getting a list of students
 	app.get("/api/students", function (req, res) {
 		db.User.findAll({
-			attributes: ["id", ["firstName", "First Name"], ["lastName", "Last Name"]],
+			attributes: ["id", ["firstName", "FirstName"], ["lastName", "LastName"]],
 			where: {
 				userType: "Student"
 			}
