@@ -18,6 +18,10 @@ router.get("/teacher", (req, res) => {
 router.get("/child", (req, res) => {
 	res.render("child")
 })
+router.get("/logout", (req, res) => {
+    req.logout();
+    res.redirect("/");
+  });
 
 
 module.exports = router
