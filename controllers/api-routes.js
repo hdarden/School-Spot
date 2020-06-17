@@ -25,16 +25,11 @@ module.exports = function (app) {
 			userType: req.body.userType,
 			teacherID: req.body.teacherID
 		}).then(function (dbUser) {
-			res.json(dbUser)
+			res.json(dbUser);
 		}).catch(function (err) {
 			res.json(err);
 		});
 	});
-	/* db.student.create({
-		if(req.body.userType)
-	}) */
-
-
 
 	// Route for logging user out
 	app.get("/logout", function (req, res) {

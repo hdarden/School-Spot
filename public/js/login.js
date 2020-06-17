@@ -1,9 +1,11 @@
+
+
 $(document).ready(function() {
 	// Getting references to our form and inputs
 	var loginForm = $("form.login");
 	var emailInput = $("input#email-input");
 	var passwordInput = $("input#password-input");
-	var logoutBtn = $(".logout-btn");
+	
 
 	// When the form is submitted, we validate there's an email and password entered
 	loginForm.on("submit", function(event) {
@@ -12,7 +14,6 @@ $(document).ready(function() {
 			email: emailInput.val().trim(),
 			password: passwordInput.val().trim()
 		};
-		$(logoutBtn).hide();
 		if (!userData.email || !userData.password) {
 			return;
 		}
@@ -23,18 +24,24 @@ $(document).ready(function() {
 		passwordInput.val("");
 	});
 
-	// loginUser does a post to our "api/login" route and if successful, redirects us the the members page
-	function loginUser(email, password) {
+	// loginUser does a post to our "api/login" route and if successful, redirects us to the members page
+	function loginUser(email, password, userType) {
 		$.post("/api/login", {
 			email: email,
-			password: password
-		})
-			.then(function() {
+			password: password,
+			userType: userType
+
+		}).then(function(data) {
+			console.log(data);
+			if (data.userType === "Teacher"){
 				window.location.href= "/teacher";
-				// If there's an error, log the error
-			})
-			.catch(function(err) {
-				console.log(err);
-			});
+			}else{
+				window.location.href= "/child";
+
+			}
+
+		}).catch(function(err) {
+			console.log(err);
+		});
 	}
 });
