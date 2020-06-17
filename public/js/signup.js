@@ -7,6 +7,32 @@ $(document).ready(function() {
 	var first_Name = $("#firstName-input");
 	var last_Name = $("#lastName-input");
 	
+	let teacherID
+	$.ajax("/api/teachers", {
+		type: "GET",
+	}).then(function (data) {
+		console.log(data);
+
+		for (let i = 0; i < data.length; i++) {
+			console.log(data[i].LastName)
+			$("<div>").addClass("dropdown-item drop").attr("data-value", data[i].id).text(data[i].LastName).appendTo(".teacher1")
+		}
+		// console.log(data[i].LastName)
+		// $(".teacher").append('<li>' + data)
+		// ({"teacher": data})
+		// Reload the page to get the updated list
+		
+		$(".drop").on("click", function(event) {
+			event.preventDefault();
+
+			console.log($(this).data("value"));
+			teacherID = $(this).data("value")
+			return teacherID
+		
+		});
+	});
+
+
 	let userTypeVar
 
 	// Listener for the User Type button
@@ -20,6 +46,7 @@ $(document).ready(function() {
 		return userTypeVar
 		//return userData;
 	});
+	// Listener for Teacher name
 	// When the signup button is clicked, we validate the email and password are not blank
 	signUpForm.on("submit", function(event) {
 		
@@ -29,7 +56,8 @@ $(document).ready(function() {
 			lastName: last_Name.val().trim(),
 			email: emailInput.val().trim(),
 			password: passwordInput.val().trim(),
-			userType: userTypeVar
+			userType: userTypeVar,
+			teacherID: teacherID
 		};
 
 		// console.log(userData)
@@ -39,15 +67,15 @@ $(document).ready(function() {
 		}
 
 		// If we have an email and password, run the signUpUser function
-		signUpUser(userData.firstName, userData.lastName, userData.email, userData.password, userData.userType);
+		signUpUser(userData.firstName, userData.lastName, userData.email, userData.password, userData.userType, teacherID);
 		emailInput.val("");
 		passwordInput.val("");
 	});
 
 	// Does a post to the signup route. If successful, we are redirected to the members page
 	// Otherwise we log any errors
-	function signUpUser(first, last, email, password, userType) {
-		console.log(first, last, email, password, userType)
+	function signUpUser(first, last, email, password, userType, teacherID) {
+		console.log(first, last, email, password, userType, teacherID)
 
 		//not working//
 		$.post("/api/signup", {
@@ -55,10 +83,12 @@ $(document).ready(function() {
 			lastName: last,
 			email: email,
 			password: password,
-			userType: userType
+			userType: userType,
+			teacherID: teacherID
 		})
 			.then(function(data) {
-				window.location.href= "/";
+				console.log(data)
+				// window.location.href= "/";
 				// If there's an error, handle it by throwing up a bootstrap alert
 			})
 			// .catch(handleLoginErr);
