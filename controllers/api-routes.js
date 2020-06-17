@@ -114,8 +114,32 @@ module.exports = function (app) {
 				model: db.User,
 				required: true
 			}]
-		}).then(function(tasks) {
+		}).then(function (tasks) {
 			res.json(tasks);
+		});
+	});
+
+	// Add a task to each student that has specific teacher
+	app.get("/api/addTask/:id", function (req, res) {
+
+		db.User.findAll({
+			where: {
+				userType: "Student",
+				teacherID: req.params.id,
+			}
+		}).then(function (students) {
+
+			var tasks = students.map(function (student) {
+				//create task for student
+				return {
+					assignedUser: student.id,
+					taskDetail: req.body.taskDetail,
+					dueDate: req.body.dueDate
+				};
+			});
+			db.Task.bulkCreate(tasks);
+		}).catch(function (err) {
+			res.status(500).json(err);
 		});
 	});
 };
