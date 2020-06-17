@@ -1,136 +1,134 @@
 {{!-- script for calendar --}}
 <script>
-    $(document).ready(function(){
-      var date_input=$('input[name="date"]'); //our date input has the name "date"
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      var options={
-        format: 'mm/dd/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      };
-      date_input.datepicker(options);
-    })
+  $(document).ready(function () {
+    var date_input = $('input[name="date"]'); //our date input has the name "date"
+    var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+    var options = {
+      format: 'mm/dd/yyyy',
+      container: container,
+      todayHighlight: true,
+      autoclose: true,
+    };
+    date_input.datepicker(options);
+  })
 </script>
+{{!-- grading table --}}
+<div class="container-2">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Grade</th>
+        <th scope="col">Percentage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>A</td>
+        <td>100-90</td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td>89-80</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>79-70</td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td>69-60</td>
+      </tr>
+      <tr>
+        <td>F</td>
+        <td>59-0</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 {{!-- body --}}
-<div class="container">
-    <div class="row">
-        <!-- Ready to be graded-->
-        <div class="col-sm-6">
-            <h4 class="text-center">Ready to Be Graded</h4>
-            <ul>
-                {{#each task}} {{#if completed}}
-                <div class="row">
+<div class="container grading-page">
+  <div class="row">
+    <!-- Ready to be graded-->
+    <div class="col-sm-6">
+      <h4 class="text-center">Ready to Be Graded</h4>
+      <ul>
+        {{#each task}} {{#if completed}}
+        <div class="row">
 
-                    <div class="col-sm-6 text-center completedTask">
-                        <p>{{id}}. {{task_name}}</p>
-                        {{!-- student Name --}}
-                    </div>
-                    <div class="col-sm-6">
-                        <button type="submit" data-id="id" class="btn btn-dark enterGrade">
-                            Enter Grade
-                        </button>
-                        <input class="input-field" id="taskGrade">
-                    </div>
-                </div>
-                <hr />
-                {{/if}} {{/each}}
-            </ul>
+          <div class="col-sm-6 text-center completedTask">
+            <p>{{id}}. {{task_name}}</p>
+            {{!-- student Name --}}
+          </div>
+          <div class="col-sm-6">
+            <button type="submit" data-id="id" class="btn btn-dark enterGrade">
+              Enter Grade
+            </button>
+            <input class="input-field" id="taskGrade">
+          </div>
         </div>
+        <hr />
+        {{/if}} {{/each}}
+      </ul>
+    </div>
 
-        <div class="col-sm-6">
-            <h4 class="text-center">Grading Completed</h4>
-            <ul>
+    <div class="col-sm-6">
+      <h4 class="text-center">Grading Completed</h4>
+      <ul>
 
-                <div class="row">
-                    {{#each task}} {{#if graded}}
-                    <div class="col-sm-6 text-center gradedTask">
-                        <p>{{id}}. {{task_name}}</p>
-                        {{!-- student name --}}
-                    </div>
-                    <div class="col-sm-6">
-                        {{!-- <button type="submit" data-id="id" class="btn btn-dark devoured">
+        <div class="row">
+          {{#each task}} {{#if graded}}
+          <div class="col-sm-6 text-center gradedTask">
+            <p>{{id}}. {{task_name}}</p>
+            {{!-- student name --}}
+          </div>
+          <div class="col-sm-6">
+            {{!-- <button type="submit" data-id="id" class="btn btn-dark devoured">
               
             </button> --}}
-                        {{!-- grade --}}
-                    </div>
-                </div>
-                <hr />
-                {{/if}} {{/each}}
-            </ul>
+            {{!-- grade --}}
+          </div>
         </div>
+        <hr />
+        {{/if}} {{/each}}
+      </ul>
     </div>
+  </div>
 </div>
 
-<div class="row">
-    <div class="col-sm-3"></div>
-    <div class="col-sm-6">
-        <h4 class="text-center">Create New Task</h4><!-- form -->
-<div class="bootstrap-iso">
- <div class="container-fluid">
-  <div class="row">
-   <div class="col-md-6 col-sm-6 col-xs-12">
+<div class="row new-task">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+    <h4 class="text-center">Create New Task</h4><!-- form -->
+    <div class="bootstrap-iso">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-12">
 
-    <!-- Form code begins -->
-    <form method="post">
-      <div class="form-group"> <!-- Date input -->
-        <label class="control-label" for="date">Select A Due Date</label>
-        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+            <!-- Form code begins -->
+            <form method="post">
+              <div class="form-group">
+                <!-- Date input -->
+                <label class="control-label" for="date">Select Due Date</label>
+                <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" />
+              </div>
+              <div class="form-group"> 
+                <!-- Submit button -->
+                {{!--  <button class="btn btn-primary " name="submit" type="submit">Submit</button> --}}
+              </div>
+            </form>
+            <!-- Form code ends -->
+
+          </div>
+        </div>
       </div>
-      <div class="form-group"> <!-- Submit button -->
-       {{!--  <button class="btn btn-primary " name="submit" type="submit">Submit</button> --}}
-      </div>
-     </form>
-     <!-- Form code ends --> 
-
+      <form class="text-center create-form">
+        <div class="form-group">
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+          <br>
+          <div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </form>
     </div>
-  </div>    
- </div>
-        <form class="text-center create-form">
-            <div class="form-group">
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-<br>
-                <div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-{{!-- <table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Grade</th>
-      <th scope="col">Percentage</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>A</td>
-      <td>100-90</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>B</td>
-      <td>89-80</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>C</td>
-      <td>79-70</td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>D</td>
-      <td>69-60</td>
-    </tr>
-    <tr>
-      <th scope="row">5</th>
-      <td>F</td>
-      <td>59-0</td>
-    </tr>
-  </tbody> --}}
-</table>
-
+  </div>
