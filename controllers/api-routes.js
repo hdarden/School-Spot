@@ -131,12 +131,15 @@ module.exports = function (app) {
 	});
 
 	// Add a task to each student that has specific teacher
-	app.post("/api/addTask/:id", function (req, res) {
+	app.post("/api/addTask", function (req, res) {
+		if (!req.user) {
+			return res.status(401).end();
+		}
 
 		db.User.findAll({
 			where: {
 				userType: "Student",
-				teacherID: req.params.id,
+				teacherID: req.user.id,
 			}
 		}).then(function (students) {
 			console.log(req.body);
