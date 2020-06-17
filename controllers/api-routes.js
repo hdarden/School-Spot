@@ -88,6 +88,20 @@ module.exports = function (app) {
 		});
 	});
 
+	// Route for getting list of tasks not completed
+	app.get("/api/uncompletedTasks/:id", function (req, res) {
+		db.Task.findAll({
+			where: {
+				completed: false,
+				assignedUser: req.params.id
+			}
+		}).then(function (tasks) {
+			res.json(tasks);
+		}).catch(function (err) {
+			res.status(500).json(err);
+		});
+	});
+
 	// Route for getting list of tasks not graded
 	app.get("/api/ungradedTasks", function (req, res) {
 		db.Task.findAll({
