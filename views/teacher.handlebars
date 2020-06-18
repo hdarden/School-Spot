@@ -51,11 +51,11 @@
         <div class="row">
 
           <div class="col-sm-6 text-center completedTask">
-            <p>{{dataValues.taskDetail}}</p>
+            <p>{{dataValues.id}}. {{dataValues.taskDetail}}</p>
             {{!-- student Name --}}
           </div>
           <div class="col-sm-6">
-            <button type="submit" data-id="id" class="btn btn-dark enterGrade">
+            <button type="submit" data-id="{{dataValues.id}}" class="btn btn-dark enterGrade">
               Enter Grade
             </button>
             <input class="input-field" id="taskGrade">

@@ -56,8 +56,9 @@ $(document).ready(function () {
 
 	$(".enterGrade").on("click", function (event) {
 		var id = $(this).data("id");
+		console.log(id);
 
-		// Send the PUT request.
+		// the following not work
 		$.ajax("/api/addTask" + id, {
 			type: "PUT",
 		}).then(function () {
