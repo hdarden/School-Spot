@@ -30,8 +30,18 @@ router.get("/teacher", (req, res) => {
 })
 
 router.get("/child", (req, res) => {
-	res.render("child", {"user": req.user})
+    db.Task.findAll({
+        where: {
+            
+            assignedUser: req.user.id
+        }
+    }).then(function (tasks) {
+        res.render("child", {"task": tasks, "user": req.user})
+        
+    })
 })
+
+
 router.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/");
