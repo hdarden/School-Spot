@@ -72,6 +72,19 @@ $(document).ready(function () {
 		});
 	});
 
+	$(".remove").on("click", function (event) {
+		var id = $(this).data("name");
+		console.log(id);
+
+		$.ajax("/api/deleteTask/" + id, {
+			type: "DELETE",
+		}).then(function () {
+			console.log("Task Deleted!");
+			// Reload the page to get the updated list
+			location.reload();
+		});
+	});
+
 	function handleLoginErr(err) {
 		$("#alert .msg").text(err.responseJSON);
 		$("#alert").fadeIn(500);
