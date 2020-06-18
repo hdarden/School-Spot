@@ -5,6 +5,9 @@ h1 {
   font-family: 'Indie Flower', cursive;
   color:  #000066;
 }
+h3 {
+  padding-bottom: 25px;
+}
 .form-group {
   color:  #000066;
   font-family: 'Itim', cursive;
