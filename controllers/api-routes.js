@@ -160,10 +160,7 @@ module.exports = function (app) {
 			});
 			// console.log(tasks);
 			db.Task.bulkCreate(tasks)
-				.then(function(err){
-					if(err) {
-						throw err;
-					}
+				.then(function(){
 					return res.sendStatus(200);
 				}).catch(function (err) {
 					console.log(err);
