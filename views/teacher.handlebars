@@ -47,7 +47,7 @@
     <div class="col-sm-6">
       <h4 class="text-center">Ready to Be Graded</h4>
       <ul>
-        {{#each task}}
+        {{#each task}} {{#unless dataVaules.graded}}
         <div class="row">
 
           <div class="col-sm-6 text-center completedTask">
@@ -58,10 +58,11 @@
             <button type="submit" data-id="{{dataValues.id}}" class="btn btn-dark enterGrade">
               Enter Grade
             </button>
-            <input class="input-field" id="taskGrade">
+            <input class="input-field gradeInput" data-value= "{{dataValues.id}}">
           </div>
         </div>
         <hr />
+        {{/unless}}
        {{/each}}
       </ul>
     </div>
@@ -69,11 +70,11 @@
     <div class="col-sm-6">
       <h4 class="text-center">Grading Completed</h4>
       <ul>
-
+ {{#each task}} {{#if dataValues.graded}}
         <div class="row">
           {{!-- {{#each task}}  --}}
           <div class="col-sm-6 text-center gradedTask">
-            {{!-- <p>{{id}}. {{task_details}}</p> --}}
+            <p>{{dataValues.id}}. {{dataValues.taskDetail}} {{dataValues.taskGrade}}</p>
             {{!-- student name --}}
           </div>
           <div class="col-sm-6">
@@ -84,7 +85,7 @@
           </div>
         </div>
         <hr />
-        {{!-- {{/if}} {{/each}} --}}
+        {{/if}} {{/each}}
       </ul>
     </div>
   </div>
