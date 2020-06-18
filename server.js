@@ -20,8 +20,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //handlebars
+var Handlebars = require("handlebars");
 var exphbs = require("express-handlebars");
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+var allowInsecurePrototypeAccess = require("@handlebars/allow-prototype-access").allowInsecurePrototypeAccess;
+app.engine("handlebars", exphbs({
+	handlebars: allowInsecurePrototypeAccess(Handlebars),
+	defaultLayout: "main"
+}));
 app.set("view engine", "handlebars");
 
 // Requiring our routes

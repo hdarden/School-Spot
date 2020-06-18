@@ -99,17 +99,23 @@ module.exports = function (app) {
 
 	// Route for getting list of tasks not graded
 	app.get("/api/ungradedTasks", function (req, res) {
+		// var ungradedTasks = function() {
+		// 	;
+		// };
 		db.Task.findAll({
 			where: {
 				completed: true,
 				graded: false,
 			},
+			attributes: ["id", "taskDetail"],
 			include: [{
 				model: db.User,
-				required: true
+				required: true,
+				attributes: ["firstName", "lastName"]
 			}]
 		}).then(function (tasks) {
 			res.json(tasks);
+			console.log(tasks);
 		}).catch(function (err) {
 			res.status(500).json(err);
 		});
@@ -142,17 +148,17 @@ module.exports = function (app) {
 				teacherID: req.user.id,
 			}
 		}).then(function (students) {
-			console.log(req.body);
+			// console.log(req.body);
 			var tasks = students.map(function (student) {
 				//create task for student
-				console.log(student.id);
+				// console.log(student.id);
 				return {
 					assignedUser: student.id,
 					taskDetail: req.body.taskDetail,
 					dueDate: req.body.dueDate
 				};
 			});
-			console.log(tasks);
+			// console.log(tasks);
 			db.Task.bulkCreate(tasks)
 				.then(function(err){
 					if(err) {
