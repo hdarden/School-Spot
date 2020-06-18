@@ -9,7 +9,7 @@ $(document).ready(function () {
     	: "body";
 	var options = {
 		format: "yyyy/mm/dd",
-		container: container,
+		/* container: container, */
 		todayHighlight: true,
 		autoclose: true,
 	};
