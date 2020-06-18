@@ -18,13 +18,13 @@ router.get("/teacher", (req, res) => {
     db.Task.findAll({
         where: {
             completed: true,
-            graded: false,
         },
         include: [{
             model: db.User,
             required: true
         }]
     }).then(function (tasks) {
+        console.log(tasks)
 	res.render("teacher", {"task": tasks, "user": req.user})
 })
 })

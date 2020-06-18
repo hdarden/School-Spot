@@ -58,8 +58,11 @@ $(document).ready(function () {
 		var id = $(this).data("id");
 		console.log(id);
 
+		var grade = $(".gradeInput").text();
+		console.log(grade)
+
 		// the following not work
-		$.ajax("/api/addTask" + id, {
+		$.ajax("/api/gradeTask/" + id, {
 			type: "PUT",
 		}).then(function () {
 			console.log("Grade Entered!");
