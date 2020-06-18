@@ -166,6 +166,7 @@ module.exports = function (app) {
 					}
 					return res.sendStatus(200);
 				}).catch(function (err) {
+					console.log(err);
 					res.status(500).json(err);
 				});
 		}).catch(function (err) {
