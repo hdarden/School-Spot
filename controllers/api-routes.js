@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
@@ -15,9 +14,7 @@ module.exports = function (app) {
 	// how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
 	// otherwise send back an error
 	app.post("/api/signup", function (req, res) {
-		//console.log(req.body)
 		db.User.create({
-			// eslint-disable-next-line camelcase
 			firstName: req.body.firstName,
 			lastName: req.body.lastName,
 			email: req.body.email,
@@ -36,15 +33,14 @@ module.exports = function (app) {
 		req.logout();
 		res.redirect("/");
 	});
-	//can grab user name and add "welcome user to the page"
+
 	// Route for getting some data about our user to be used client side
 	app.get("/api/user_data", function (req, res) {
 		if (!req.user) {
 			// The user is not logged in, send back an empty object
 			res.json({});
 		} else {
-			// Otherwise send back the user's email and id
-			// Sending back a password, even a hashed password, isn't a good idea
+			// Otherwise send back the user's email and id (will not return password of user)
 			res.json({
 				email: req.user.email,
 				firstName: req.user.firstName,
@@ -99,9 +95,6 @@ module.exports = function (app) {
 
 	// Route for getting list of tasks not graded
 	app.get("/api/ungradedTasks", function (req, res) {
-		// var ungradedTasks = function() {
-		// 	;
-		// };
 		db.Task.findAll({
 			where: {
 				completed: true,
@@ -148,17 +141,14 @@ module.exports = function (app) {
 				teacherID: req.user.id,
 			}
 		}).then(function (students) {
-			// console.log(req.body);
 			var tasks = students.map(function (student) {
-				//create task for student
-				// console.log(student.id);
+				// Create task for student
 				return {
 					assignedUser: student.id,
 					taskDetail: req.body.taskDetail,
 					dueDate: req.body.dueDate
 				};
 			});
-			// console.log(tasks);
 			db.Task.bulkCreate(tasks)
 				.then(function(){
 					return res.sendStatus(200);
@@ -198,7 +188,7 @@ module.exports = function (app) {
 		});
 	});
 
-	// delete task
+	// Teacher removing task from graded list (deletes task from db)
 	app.delete("/api/deleteTask/:id", function (req, res) {
 		db.Task.destroy({
 			where: {id: req.params.id}
