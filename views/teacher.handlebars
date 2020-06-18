@@ -1,10 +1,10 @@
 <br>
 <div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <h2>Welcome <span class="member-name"></span></h2>
-        </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h2>Welcome <span class="member-name"></span></h2>
     </div>
+  </div>
 </div>
 <script type="text/javascript" src="js/members.js"></script>
 {{!-- grading table --}}
@@ -54,23 +54,32 @@
             <p>{{dataValues.id}}. {{dataValues.taskDetail}}</p>
             {{!-- student Name --}}
           </div>
-          <div class="col-sm-6">
+          {{!-- <div class="col-sm-6">
             <button type="submit" data-id="{{dataValues.id}}" class="btn btn-dark enterGrade">
               Enter Grade
             </button>
             <input class="input-field gradeInput" data-value= "{{dataValues.id}}">
+          </div> --}}
+          <div class="col-sm-6 text-center gradeDiv">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary enterGrade" type="button" data-id="{{dataValues.id}}">Enter Grade</button>
+              </div>
+              <input type="text" class="form-control" name="grade" placeholder="" data-value= "{{dataValues.id}}" aria-label="Example text with button addon"
+                aria-describedby="button-addon1">
+            </div>
           </div>
         </div>
         <hr />
         {{/unless}}
-       {{/each}}
+        {{/each}}
       </ul>
     </div>
 
     <div class="col-sm-6">
       <h4 class="text-center">Grading Completed</h4>
       <ul>
- {{#each task}} {{#if dataValues.graded}}
+        {{#each task}} {{#if dataValues.graded}}
         <div class="row">
           <div class="col-sm-6 text-center gradedTask">
             <p>{{dataValues.id}}. {{dataValues.taskDetail}} </p>
@@ -103,7 +112,7 @@
                 <label class="control-label" for="date">Select Due Date</label>
                 <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" />
               </div>
-              <div class="form-group"> 
+              <div class="form-group">
               </div>
             </form>
             <!-- Form code ends -->
