@@ -1,10 +1,10 @@
 <br>
 <div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <h2>Welcome <span class="member-name"></span></h2>
-        </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h2>Welcome <span class="member-name"></span></h2>
     </div>
+  </div>
 </div>
 {{!-- grading table --}}
 <div class="container-2">
@@ -44,7 +44,7 @@
   <div class="row">
     <!-- Ready to be graded-->
     <div class="col-sm-6">
-      <h4 class="text-center">Assignments Todo</h4>
+      <h3 class="text-center">Assignments Todo</h3>
       <ul>
         {{#each task}} {{#unless dataValues.completed}}
         <div class="row">
@@ -54,7 +54,7 @@
             {{!-- student Name --}}
           </div>
           <div class="col-sm-6">
-            <button type="submit" data-id="{{dataValues.id}}" class="btn btn-dark enterGrade">
+            <button type="submit" data-id="{{dataValues.id}}" class="btn btn-dark markComplete">
               Mark Completed
             </button>
           </div>
@@ -66,14 +66,19 @@
     </div>
 
     <div class="col-sm-6">
-      <h4 class="text-center">Graded Assignments</h4>
+      <h3 class="text-center">Graded Assignments</h3>
       <ul>
 
         <div class="row">
           {{#each task}} {{#if dataValues.graded}}
           <div class="col-sm-6 text-center gradedTask">
-            <p>{{dataValues.taskDetail}}</p>
-            <div class="grade-percent">Grade: {{dataValues.taskGrade}}</div>
+            <h4>Assignment</h4>
+            <p>{{dataValues.taskDetail}} </p>
+            {{!-- <div class="grade-percent"> {{dataValues.taskDetail}}Grade: {{dataValues.taskGrade}}</div> --}}
+          </div>
+          <div class="col-sm-6 text-center"> 
+            <h4>Grade</h4>
+            <p>{{dataValues.taskGrade}}</p>
           </div>
         </div>
         <hr />
@@ -86,7 +91,8 @@
 <div class="row new-task">
   <div class="col-sm-3"></div>
   <div class="col-sm-6">
-   
-    
-    </div>
+
+
   </div>
+</div>
+<script src="/js/child.js"></script>
