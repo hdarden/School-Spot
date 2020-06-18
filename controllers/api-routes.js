@@ -18,8 +18,8 @@ module.exports = function (app) {
 		//console.log(req.body)
 		db.User.create({
 			// eslint-disable-next-line camelcase
-			firstName: req.body.firstName,
-			lastName: req.body.lastName,
+			firstName: req.user.firstName,
+			lastName: req.user.lastName,
 			email: req.body.email,
 			password: req.body.password,
 			userType: req.body.userType,
@@ -47,10 +47,10 @@ module.exports = function (app) {
 			// Sending back a password, even a hashed password, isn't a good idea
 			res.json({
 				email: req.user.email,
-				firstName: req.body.firstName,
-				lastName: req.body.lastName,
+				firstName: req.user.firstName,
+				lastName: req.user.lastName,
 				id: req.user.id,
-				userType: req.body.userType
+				userType: req.user.userType
 			});
 		}
 	});
