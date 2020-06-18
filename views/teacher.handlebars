@@ -1,6 +1,6 @@
 <br>
 <div class="container text-center">
-      <h1>Welcome <span class="member-name"></span></h1>
+  <h1>Welcome <span class="member-name"></span></h1>
 </div>
 <script type="text/javascript" src="js/members.js"></script>
 {{!-- grading table --}}
@@ -37,16 +37,55 @@
   </table>
 </div>
 {{!-- body --}}
+<div class="row new-task">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6 border">
+    <h4 class="text-center">Create New Task</h4><!-- form -->
+    <div class="bootstrap-iso">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-12 noMargin">
+
+            <!-- Calendar Form code begins -->
+            <form method="post">
+              <div class="form-group">
+                <!-- Date input -->
+                <label class="control-label" for="date">Select Due Date:</label>
+                <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" />
+              </div>
+              <div class="form-group">
+              </div>
+            </form>
+            <!-- Form code ends -->
+
+          </div>
+        </div>
+      </div>
+      <label class="control-label text-left taskDetails" for="date">Task Details: </label>
+      <form class="text-center create-form newTaskForm">
+        <div class="form-group ">
+  
+          <textarea class="form-control" id="taskText" rows="2"></textarea>
+          <br>
+          <div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <div class="container grading-page">
   <div class="row">
     <!-- Ready to be graded-->
     <div class="col-sm-6">
-      <h4 class="text-center">Ready to Be Graded</h4>
+      <h3 class="text-center">Ready to Be Graded</h3>
       <ul>
         {{#each task}} {{#unless dataValues.graded}}
         <div class="row">
 
-          <div class="col-sm-6 text-center completedTask">
+          <div class="col-sm-6 completedTask">
             <p>{{dataValues.id}}. {{dataValues.taskDetail}}</p>
             {{!-- student Name --}}
           </div>
@@ -59,10 +98,11 @@
           <div class="col-sm-6 text-center gradeDiv">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
-                <button class="btn btn-outline-secondary enterGrade" type="button" data-id="{{dataValues.id}}">Enter Grade</button>
+                <button class="btn btn-outline-secondary enterGrade" type="button" data-id="{{dataValues.id}}">Enter
+                  Grade</button>
               </div>
-              <input type="text" class="form-control" name="grade" placeholder="" data-value= "{{dataValues.id}}" aria-label="Example text with button addon"
-                aria-describedby="button-addon1">
+              <input type="text" class="form-control" name="grade" placeholder="" data-value="{{dataValues.id}}"
+                aria-label="Example text with button addon" aria-describedby="button-addon1">
             </div>
           </div>
         </div>
@@ -73,19 +113,20 @@
     </div>
 
     <div class="col-sm-6">
-      <h4 class="text-center">Grading Completed</h4>
+      <h3 class="text-center">Grading Completed</h3>
       <ul>
         {{#each task}} {{#if dataValues.graded}}
         <div class="row">
-          <div class="col-sm-6 text-center gradedTask">
+          <div class="col-sm-6 gradedTask">
             <p>{{dataValues.id}}. {{dataValues.taskDetail}} </p>
-            <div class="grade-percent">Grade: {{dataValues.taskGrade}}</div>
+            <div class="grade-percent text-center">Grade: {{dataValues.taskGrade}}</div>
             {{!-- student name --}}
           </div>
           <div class="col-sm-6">
             <div class="input-group-prepend">
-                <button class="btn btn-outline-secondary remove" type="button" data-name="{{dataValues.id}}">Remove Graded Task</button>
-              </div>
+              <button class="btn btn-outline-secondary remove" type="button" data-name="{{dataValues.id}}">Remove Graded
+                Task</button>
+            </div>
           </div>
         </div>
         <hr />
@@ -95,39 +136,4 @@
   </div>
 </div>
 
-<div class="row new-task">
-  <div class="col-sm-3"></div>
-  <div class="col-sm-6">
-    <h4 class="text-center">Create New Task</h4><!-- form -->
-    <div class="bootstrap-iso">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6 col-sm-6 col-xs-12">
-
-            <!-- Calendar Form code begins -->
-            <form method="post">
-              <div class="form-group">
-                <!-- Date input -->
-                <label class="control-label" for="date">Select Due Date</label>
-                <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" />
-              </div>
-              <div class="form-group">
-              </div>
-            </form>
-            <!-- Form code ends -->
-
-          </div>
-        </div>
-      </div>
-      <form class="text-center create-form newTaskForm">
-        <div class="form-group ">
-          <textarea class="form-control" id="taskText" rows="2"></textarea>
-          <br>
-          <div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-  <script src="/js/teacher.js"></script>
+<script src="/js/teacher.js"></script>
