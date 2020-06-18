@@ -193,4 +193,15 @@ module.exports = function (app) {
 			res.status(500).json(err);
 		});
 	});
+	
+	// delete task
+	app.delete("/api/deleteTask/:id", function (req, res) {
+		db.Task.destroy({
+			where: {id: req.params.id}
+		}).then(function(dbTask) {
+			res.json(dbTask);
+		}).catch(function (err) {
+			res.status(500).json(err);
+		});
+	});
 };
