@@ -8,6 +8,9 @@ h1 {
 h3 {
   padding-bottom: 25px;
 }
+h4 {
+  text-decoration: underline;
+}
 .form-group {
   color:  #000066;
   font-family: 'Itim', cursive;
