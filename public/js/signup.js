@@ -88,7 +88,7 @@ $(document).ready(function() {
 		})
 			.then(function(data) {
 				console.log(data)
-				// window.location.href= "/";
+				window.location.href= "/";
 				// If there's an error, handle it by throwing up a bootstrap alert
 			})
 			// .catch(handleLoginErr);

@@ -18,8 +18,8 @@ module.exports = function (app) {
 		//console.log(req.body)
 		db.User.create({
 			// eslint-disable-next-line camelcase
-			firstName: req.user.firstName,
-			lastName: req.user.lastName,
+			firstName: req.body.firstName,
+			lastName: req.body.lastName,
 			email: req.body.email,
 			password: req.body.password,
 			userType: req.body.userType,
