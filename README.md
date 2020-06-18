@@ -26,10 +26,22 @@ This application allows teachers, parents, and students to manage the child's sc
 * [Contributing](#contributing)
 
 ## Installation
-To install, please run the following command in terminal:
+To install the node dependencies, please run the following command in terminal:
   
 ```
 npm i
+```
+
+After the installation of all dependencies in above command, please run the following command in terminal to create the database:
+
+```
+npx sequelize-cli db:create
+```
+
+To initialize the server, run the following command:
+
+```
+node server.js
 ```
 
 ## Tests
