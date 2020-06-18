@@ -169,15 +169,17 @@ module.exports = function (app) {
 
 	// Student marking a task completed
 	app.put("/api/completeTask/:id", function (req, res) {
+		console.log(req.params.id)
 		db.Task.update({
-			complete: true
+			completed: true
 		}, {
-			where: { taskId: req.params.id }
+			where: { id: req.params.id }
 		}).then(function (dbTask) {
 			res.json(dbTask);
-		}).catch(function (err) {
-			res.status(500).json(err);
 		});
+		// .catch(function (err) {
+		// 	res.status(500).json(err);
+		// });
 	});
 
 	// Teacher grading the task
