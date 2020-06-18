@@ -65,12 +65,12 @@
       <h3 class="text-center">Graded Assignments</h3>
       <ul>
 
-        <div class="row">
+        
           {{#each task}} {{#if dataValues.graded}}
+          <div class="row">
           <div class="col-sm-6 text-center gradedTask">
             <h4>Assignment</h4>
             <p>{{dataValues.taskDetail}} </p>
-            {{!-- <div class="grade-percent"> {{dataValues.taskDetail}}Grade: {{dataValues.taskGrade}}</div> --}}
           </div>
           <div class="col-sm-6 text-center"> 
             <h4>Grade</h4>
