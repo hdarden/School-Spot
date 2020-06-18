@@ -72,7 +72,8 @@
         <div class="row">
           {{#each task}} {{#if dataValues.graded}}
           <div class="col-sm-6 text-center gradedTask">
-            <p>{{dataValues.taskDetail}} Grade: {{dataValues.taskGrade}}</p>
+            <p>{{dataValues.taskDetail}}</p>
+            <div class="grade-percent">Grade: {{dataValues.taskGrade}}</div>
           </div>
         </div>
         <hr />
