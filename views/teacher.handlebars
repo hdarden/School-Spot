@@ -85,8 +85,8 @@
         {{#each task}} {{#unless dataValues.graded}}
         <div class="row">
 
-          <div class="col-sm-6 completedTask">
-            <p>{{dataValues.id}}. {{dataValues.taskDetail}}</p>
+          <div class="col-sm-6 text-center completedTask">
+            <p>{{dataValues.id}}. {{User.firstName}} {{User.lastName}} {{dataValues.taskDetail}}</p>
             {{!-- student Name --}}
           </div>
           {{!-- <div class="col-sm-6">
