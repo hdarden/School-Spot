@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
@@ -16,8 +15,8 @@ module.exports = function (app) {
 	// otherwise send back an error
 	app.post("/api/signup", function (req, res) {
 		db.User.create({
-			firstName: req.user.firstName,
-			lastName: req.user.lastName,
+			firstName: req.body.firstName,
+			lastName: req.body.lastName,
 			email: req.body.email,
 			password: req.body.password,
 			userType: req.body.userType,
@@ -143,7 +142,7 @@ module.exports = function (app) {
 			}
 		}).then(function (students) {
 			var tasks = students.map(function (student) {
-				//create task for student
+				// Create task for student
 				return {
 					assignedUser: student.id,
 					taskDetail: req.body.taskDetail,
