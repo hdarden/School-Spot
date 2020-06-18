@@ -1,54 +1,53 @@
 var express = require("express");
-var passport = require("../config/passport");
 var db = require("../models");
 
-var router = express.Router()
+var router = express.Router();
 
-router.get("/", (req, res) => {
-    res.render("login", {"login": true})
-})
+router.get("/", function (req, res) {
+	res.render("login", {"login": true});
+});
 
-router.get("/signup", (req, res) => {
-    res.render("signup")
-})
+router.get("/signup", function (req, res) {
+	res.render("signup");
+});
 
-router.get("/teacher", (req, res) => {
-    //get all tasks
-    //if completed but not graded
-    db.Task.findAll({
-        where: {
-            completed: true,
-        },
-        include: [{
-            model: db.User,
-            required: true
-        }]
-    }).then(function (tasks) {
-        console.log(tasks)
-	res.render("teacher", {"task": tasks, "user": req.user})
-})
-})
+router.get("/teacher", function (req, res) {
+	//get all tasks
+	//if completed but not graded
+	db.Task.findAll({
+		where: {
+			completed: true,
+		},
+		include: [{
+			model: db.User,
+			required: true
+		}]
+	}).then(function (tasks) {
+		console.log(tasks);
+		res.render("teacher", {"task": tasks, "user": req.user});
+	});
+});
 
-router.get("/child", (req, res) => {
-    db.Task.findAll({
-        where: {
-            
-            assignedUser: req.user.id
-        }
-    }).then(function (tasks) {
-        res.render("child", {"task": tasks, "user": req.user})
-        
-    })
-})
+router.get("/child", function (req, res) {
+	db.Task.findAll({
+		where: {
 
+			assignedUser: req.user.id
+		}
+	}).then(function (tasks) {
+		res.render("child", {"task": tasks, "user": req.user});
 
-router.get("/logout", (req, res) => {
-    req.logout();
-    res.redirect("/");
-  });
+	});
+});
 
 
-module.exports = router
+router.get("/logout", function (req, res) {
+	req.logout();
+	res.redirect("/");
+});
+
+
+module.exports = router;
 
 
 

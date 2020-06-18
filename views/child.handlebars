@@ -1,6 +1,6 @@
 <br>
 <div class="container text-center">
-      <h1>Welcome <span class="member-name"></span></h1>
+  <h1>Welcome <span class="member-name"></span></h1>
 </div>
 {{!-- grading table --}}
 <div class="container-2">
@@ -63,17 +63,25 @@
 
     <div class="col-sm-6">
       <h3 class="text-center">Graded Assignments</h3>
+      <div class="row assignment">
+        <div class="col-sm-6 text-center">
+          <h4>Assignment</h4>
+          </div>
+          <div class="col-sm-6 text-center">
+            <h4>Grade</h4>
+          
+        </div>
+      </div>
       <ul>
 
+        {{#each task}} {{#if dataValues.graded}}
         <div class="row">
-          {{#each task}} {{#if dataValues.graded}}
           <div class="col-sm-6 text-center gradedTask">
-            <h4>Assignment</h4>
+
             <p>{{dataValues.taskDetail}} </p>
-            {{!-- <div class="grade-percent"> {{dataValues.taskDetail}}Grade: {{dataValues.taskGrade}}</div> --}}
           </div>
-          <div class="col-sm-6 text-center"> 
-            <h4>Grade</h4>
+          <div class="col-sm-6 text-center">
+
             <p>{{dataValues.taskGrade}}</p>
           </div>
         </div>

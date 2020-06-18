@@ -5,6 +5,12 @@ h1 {
   font-family: 'Indie Flower', cursive;
   color:  #000066;
 }
+h3 {
+  padding-bottom: 25px;
+}
+h4 {
+  text-decoration: underline;
+}
 .form-group {
   color:  #000066;
   font-family: 'Itim', cursive;
@@ -58,4 +64,26 @@ form.login {
 }
 .grade-percent {
   border: 2px solid black;
+}
+
+.remove {
+  background-color: rgb(160, 20, 20);
+  color: white
+}
+
+.enterGrade {
+  color: white
+}
+
+.noMargin {
+  padding-left: 0;
+}
+
+.taskDetails {
+  color: #000066
+}
+
+.borderTask {
+  border: 2px solid black;
+  padding: 10px;
 }
