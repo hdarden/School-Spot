@@ -57,12 +57,13 @@ $(document).ready(function () {
 	$(".enterGrade").on("click", function (event) {
 		var id = $(this).data("id");
 		console.log(id);
-
-		var grade = $(".gradeInput").text();
-		console.log(grade)
-
-		// the following not work
-		$.ajax("/api/gradeTask/" + id, {
+		// if data.name === id {
+			//store it as taskGrade
+		// console.log($(this).data("name"))
+		var taskGrade = $(`.gradeDiv [data-value = ${id}]`).val().trim()
+		console.log($(`.gradeDiv [data-value = ${id}]`).val().trim())
+		
+		$.ajax("/api/gradeTask/" + id + "/" + taskGrade, {
 			type: "PUT",
 		}).then(function () {
 			console.log("Grade Entered!");
