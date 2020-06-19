@@ -1,17 +1,18 @@
 var express = require("express");
 var db = require("../models");
+var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 var router = express.Router();
 
 router.get("/", function (req, res) {
-	res.render("login", {"login": true});
+	res.render("login");
 });
 
 router.get("/signup", function (req, res) {
 	res.render("signup");
 });
 
-router.get("/teacher", function (req, res) {
+router.get("/teacher", isAuthenticated, function (req, res) {
 	//get all tasks
 	//if completed but not graded
 	db.Task.findAll({
@@ -28,7 +29,7 @@ router.get("/teacher", function (req, res) {
 	});
 });
 
-router.get("/child", function (req, res) {
+router.get("/child", isAuthenticated, function (req, res) {
 	db.Task.findAll({
 		where: {
 
