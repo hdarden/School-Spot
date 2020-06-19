@@ -90,19 +90,19 @@ Once the student has completed an assignment, the student needs to click on the 
 
 ## Screenshots
 
-![Home Page](public/images/homePage.PNG)
+![Home Page](public/images/homePage.png)
 
 *Home Page of Application*
 
-![Signup Page](public/images/signup.PNG)
+![Signup Page](public/images/signup.png)
 
 *Completion of signup page for new user*
 
-![Teacher Dashboard](public/images/teacherdash.PNG)
+![Teacher Dashboard](public/images/teacherdash.png)
 
 *Demo of the instructor dashboard*
 
-![Student Dashboard](public/images/studentdash.PNG)
+![Student Dashboard](public/images/studentdash.png)
 
 *Demo of the student dashboard*
 
