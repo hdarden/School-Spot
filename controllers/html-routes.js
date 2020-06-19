@@ -16,13 +16,16 @@ router.get("/teacher", isAuthenticated, function (req, res) {
 	//get all tasks
 	//if completed but not graded
 	db.Task.findAll({
-		where: {
-			completed: true,
-		},
 		include: [{
 			model: db.User,
-			required: true
-		}]
+			required: true,
+			where: {
+				teacherID: req.user.id
+			}
+		}],
+		where: {
+			completed: true,
+		}
 	}).then(function (tasks) {
 		console.log(tasks);
 		res.render("teacher", {"task": tasks, "user": req.user});
