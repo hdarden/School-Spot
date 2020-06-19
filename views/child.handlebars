@@ -45,8 +45,9 @@
         {{#each task}} {{#unless dataValues.completed}}
         <div class="row">
 
-          <div class="col-sm-6 text-center completedTask">
+          <div class="col-sm-6 completedTask">
             <p>{{dataValues.taskDetail}}</p>
+            <p>Due Date: {{dataValues.dueDate}}</p>
           </div>
           <div class="col-sm-6">
             <button type="submit" data-id="{{dataValues.id}}" class="btn btn-dark markComplete">
@@ -75,7 +76,7 @@
 
         {{#each task}} {{#if dataValues.graded}}
         <div class="row">
-          <div class="col-sm-6 text-center gradedTask">
+          <div class="col-sm-6 gradedTask">
 
             <p>{{dataValues.taskDetail}} </p>
           </div>
