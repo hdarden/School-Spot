@@ -2,11 +2,11 @@
 ![npm](https://img.shields.io/npm/v/inquirer?style=plastic)
 
 ## Description
-This application allows teachers, parents, and students to manage the child's school assignments and grades. This provides a base for information and communication between all parties.
+This application allows teachers and students to manage the student's assignments and grades. The teacher and student dashboards help to facilitate better communication and efficient grading of assignments.
 
 ## Deployment
 
-[School Spot](https://)
+[School Spot](https://fast-beach-51043.herokuapp.com/)
 
 ![](public/images/SchoolSpotDemo.gif)
 
