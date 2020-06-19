@@ -87,3 +87,11 @@ form.login {
   border: 2px solid black;
   padding: 10px;
 }
+
+.bold {
+  font-weight: bolder;
+}
+
+.welcome {
+  font-family: 'Itim', cursive;
+}

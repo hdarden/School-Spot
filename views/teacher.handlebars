@@ -1,6 +1,6 @@
 <br>
 <div class="container text-center">
-  <h1>Welcome <span class="member-name"></span></h1>
+  <h1 class= "welcome">Welcome <span class="member-name"></span></h1>
 </div>
 <script type="text/javascript" src="js/members.js"></script>
 {{!-- grading table --}}
@@ -51,7 +51,7 @@
               <div class="form-group">
                 <!-- Date input -->
                 <label class="control-label" for="date">Select Due Date:</label>
-                <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" />
+                <input class="form-control" id="date" name="date" placeholder="YYYY/MM/DD" type="text" />
               </div>
               <div class="form-group">
               </div>
@@ -64,7 +64,7 @@
       <label class="control-label text-left taskDetails" for="date">Task Details: </label>
       <form class="text-center create-form newTaskForm">
         <div class="form-group ">
-  
+
           <textarea class="form-control" id="taskText" rows="2"></textarea>
           <br>
           <div>
@@ -85,8 +85,9 @@
         {{#each task}} {{#unless dataValues.graded}}
         <div class="row">
 
-          <div class="col-sm-6 text-center completedTask">
-            <p>{{dataValues.id}}. {{User.firstName}} {{User.lastName}} {{dataValues.taskDetail}}</p>
+          <div class="col-sm-6 completedTask">
+            <div>Student Name: {{User.firstName}} {{User.lastName}}</div>
+            <div>Task: {{dataValues.id}}. {{dataValues.taskDetail}}</div>
             {{!-- student Name --}}
           </div>
           {{!-- <div class="col-sm-6">
@@ -118,7 +119,8 @@
         {{#each task}} {{#if dataValues.graded}}
         <div class="row">
           <div class="col-sm-6 gradedTask">
-            <p>{{dataValues.id}}. {{dataValues.taskDetail}} </p>
+            <div>Student Name: {{User.firstName}} {{User.lastName}}</div>
+            <div>Task: {{dataValues.id}}. {{dataValues.taskDetail}}</div>
             <div class="grade-percent text-center">Grade: {{dataValues.taskGrade}}</div>
             {{!-- student name --}}
           </div>
